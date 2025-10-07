@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ticket Booking - Travel App</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+    <header class="app-header">
+        <h1 id="header-title">TICKET BOOKING</h1>
+    </header>
+
+    <main class="app-container">
+
+        <section id="booking-screen" class="screen-content">
+            <div class="card booking-card">
+                <h2>Ticket Booking</h2>
+                
+                <div class="destination-image">
+                    <div class="beach-image full-width">
+                        <div class="palm-tree">🌴</div>
+                        <div class="palm-tree second">🌴</div>
+                    </div>
+                </div>
+                <h3 class="destination-name">Bali Beach Paradise</h3>
+                
+                <form action="confirmation.html" method="get">
+                    <p class="label-text">Date </p>
+                    <input type="date" value="2024-04-18" required>
+                    
+                    <p class="label-text">Destination </p>
+                    <select id="destination-select" required>
+                        <option value="bali" selected>Bali Beach Paradise (IDR 500.000)</option>
+                        <option value="bromo">Mount Bromo (IDR 350.000)</option>
+                        <option value="borobudur">Borobudur Temple (IDR 200.000)</option>
+                        <option value="jakarta">Jakarta City (IDR 400.000)</option>
+                    </select>
+
+                    <p class="label-text">Tickets </p>
+                    <input type="number" value="1" min="1" max="10" required>
+                    
+                    <p class="label-text">Price per ticket</p>
+                    <input type="text" value="IDR 500.000" readonly style="color: var(--primary-color); font-weight: bold;">
+                    
+                    <div class="price-summary">
+                        <span>Total Price </span>
+                        <span class="total-price">IDR 500.000</span>
+                    </div>
+
+                    <button type="submit" class="btn primary-btn continue-btn">Continue</button>
+                </form>
+            </div>
+        </section>
+
+    </main>
+
+    <nav class="bottom-nav">
+        <a href="home.html" class="nav-item">
+            <i class="fas fa-home"></i>
+            <span>Home</span>
+        </a>
+        <a href="booking.html" class="nav-item active">
+            <i class="fas fa-ticket-alt"></i>
+            <span>Tickets</span>
+        </a>
+        <a href="confirmation.html" class="nav-item">
+            <i class="fas fa-user"></i>
+            <span>Profile</span>
+        </a>
+    </nav>
+
+    <footer class="app-footer">
+        &copy; 2024 10 pplg 1 kelompok 3
+    </footer>
+</body>
+</html>

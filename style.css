@@ -1,0 +1,622 @@
+/*
+    -------------------------------------------
+    GLOBAL STYLES & LAYOUT
+    -------------------------------------------
+*/
+:root {
+    --primary-color: #3b82f6; /* Biru terang */
+    --primary-dark: #1e40af;  /* Biru gelap untuk hover */
+    --background-light: #f3f4f6;
+    --card-background: #ffffff;
+    --text-dark: #1f2937;
+    --text-muted: #6b7280;
+    --border-color: #d1d5db;
+    --success-color: #10b981;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+body {
+    background-color: var(--background-light);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    color: var(--text-dark);
+}
+
+/* Main App Container - Mensimulasikan tampilan mobile */
+.app-container {
+    width: 100%;
+    max-width: 400px; /* Lebar khas smartphone */
+    min-height: 100vh;
+    background-color: var(--card-background);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+    padding-top: 60px; /* Ruang untuk header */
+    padding-bottom: 60px; /* Ruang untuk bottom nav */
+}
+
+/* Card General Styling */
+.card {
+    background-color: var(--card-background);
+    padding: 24px;
+    border-radius: 20px;
+    margin: 0 16px 16px 16px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+/* Screens Management - Dihapus karena menggunakan file terpisah */
+/* Hanya perlu padding untuk konten */
+.screen-content {
+    padding: 16px 0;
+}
+
+/*
+    -------------------------------------------
+    NAVBAR (HEADER) & FOOTER
+    -------------------------------------------
+*/
+.app-header {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 400px;
+    background-color: var(--primary-color);
+    color: var(--card-background);
+    padding: 16px 0;
+    text-align: center;
+    z-index: 100;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+.app-header h1 {
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.app-footer {
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    padding: 8px 0;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    background-color: var(--background-light);
+    z-index: 50;
+    /* Menyembunyikan footer di layar yang menggunakan bottom-nav */
+    display: none;
+}
+/* Hanya tampilkan footer di layar yang lebih besar (desktop) */
+@media (min-width: 401px) {
+    .app-footer {
+        display: block;
+        bottom: 0;
+        max-width: 400px;
+        background-color: var(--card-background);
+        border-top: 1px solid var(--border-color);
+    }
+    .app-container {
+        min-height: 90vh; /* Agar footer tidak menempel di bawah */
+        border-radius: 12px;
+    }
+}
+
+
+/*
+    -------------------------------------------
+    BOTTOM NAVIGATION (SIDEBAR)
+    -------------------------------------------
+*/
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 400px;
+    height: 60px;
+    background-color: var(--card-background);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+    z-index: 100;
+}
+
+.bottom-nav .nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: var(--text-muted);
+    font-size: 0.7rem;
+    padding: 4px;
+    transition: color 0.3s ease;
+}
+
+.bottom-nav .nav-item i {
+    font-size: 1.2rem;
+    margin-bottom: 2px;
+}
+
+.bottom-nav .nav-item.active {
+    color: var(--primary-color);
+}
+
+/*
+    -------------------------------------------
+    FORM & BUTTON STYLES
+    -------------------------------------------
+*/
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+input[type="date"],
+select {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 16px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+input:focus, select:focus {
+    border-color: var(--primary-color);
+}
+
+.btn {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.primary-btn {
+    background-color: var(--primary-color);
+    color: var(--card-background);
+}
+
+.primary-btn:hover {
+    background-color: var(--primary-dark);
+}
+
+/*
+    -------------------------------------------
+    LOGIN & REGISTER SCREENS
+    -------------------------------------------
+*/
+
+.login-card, .register-card {
+    text-align: center;
+    padding: 32px 24px;
+}
+
+.login-card h2 {
+    margin-top: 10px;
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+
+.login-card p {
+    color: var(--text-muted);
+    margin-bottom: 24px;
+}
+
+.login-card form, .register-card form {
+    margin-top: 20px;
+}
+
+.ticket-icon {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin: 0 auto;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 3px solid var(--primary-color);
+    border-radius: 12px;
+    margin-bottom: 10px;
+}
+
+.forgot-password {
+    display: block;
+    margin-top: 10px;
+    font-size: 0.9rem;
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.signup-link, .login-link {
+    margin-top: 20px;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+.signup-link a, .login-link a {
+    color: var(--primary-color);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.register-card label {
+    display: block;
+    text-align: left;
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin-bottom: 4px;
+    color: var(--text-dark);
+}
+
+/* Untuk layout register yang lebih rapi */
+.register-card input {
+    margin-bottom: 12px;
+}
+.register-card button {
+    margin-top: 20px;
+}
+
+/*
+    -------------------------------------------
+    HOME & DESTINATION SCREENS
+    -------------------------------------------
+*/
+.home-card h2 {
+    text-align: left;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+}
+
+.section-title {
+    font-weight: 600;
+    margin-bottom: 10px;
+    margin-top: 20px;
+    text-align: left;
+}
+
+.destination-preview {
+    margin-bottom: 25px;
+    cursor: pointer; /* Memberikan indikasi bisa diklik */
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.beach-image {
+    background-color: #a8dadc; /* Warna langit */
+    border-radius: 12px;
+    height: 150px;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+.beach-image::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 30%;
+    background-color: #f1faee; /* Warna pasir */
+    z-index: 1;
+}
+
+.beach-image::after {
+    content: '';
+    position: absolute;
+    bottom: 30%;
+    width: 100%;
+    height: 70%;
+    background-color: #457b9d; /* Warna laut */
+    z-index: 0;
+}
+
+.beach-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-align: left;
+}
+
+.palm-tree {
+    font-size: 2.5rem;
+    z-index: 2;
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    color: #4c661d;
+}
+
+.palm-tree.second {
+    font-size: 3rem;
+    right: 50px;
+    bottom: 10px;
+    color: #4c661d;
+}
+
+/* Popular Destinations Grid */
+.popular-destinations {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.dest-item {
+    flex: 1;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+}
+
+.dest-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 10px;
+    margin-bottom: 8px;
+    background-size: cover;
+    background-position: center;
+    background-color: var(--background-light);
+    border: 1px solid var(--border-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dest-icon span {
+    font-size: 30px;
+}
+
+/* Ikon/Ilustrasi Sederhana untuk Destinasi */
+.mountain-icon { /* Mengganti dengan emoji untuk konsistensi tanpa JS */
+    /* background-image: url('...'); */
+}
+.temple-icon {
+    /* background-image: url('...'); */
+}
+.city-icon {
+    /* background-image: url('...'); */
+}
+
+/* List Destinasi di destinasi.html */
+.destination-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.destination-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 10px;
+    text-decoration: none;
+    color: inherit;
+    transition: background-color 0.2s;
+}
+
+.destination-item:hover {
+    background-color: var(--background-light);
+}
+
+.dest-info {
+    flex-grow: 1;
+    text-align: left;
+}
+
+.dest-info h4 {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.dest-info p {
+    margin: 4px 0 0 0;
+    font-size: 0.9rem;
+    color: var(--primary-color);
+    font-weight: 700;
+}
+
+.dest-thumb {
+    width: 60px;
+    height: 60px;
+    border-radius: 8px;
+    background-color: #ccc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+}
+
+
+/*
+    -------------------------------------------
+    TICKET BOOKING SCREEN
+    -------------------------------------------
+*/
+.booking-card {
+    text-align: left;
+}
+
+.destination-image .beach-image {
+    height: 180px;
+    margin-bottom: 20px;
+}
+
+.destination-name {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.label-text {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+
+/* Untuk input field yang bisa diubah-ubah */
+.booking-card input:read-only {
+    background-color: var(--background-light);
+    cursor: not-allowed;
+}
+
+.ticket-counter {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+/* Di HTML/CSS statis, ini hanya ilustrasi, tombol tidak akan berfungsi tanpa JS */
+.ticket-counter span {
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.counter-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.counter-btn {
+    width: 30px;
+    height: 30px;
+    background-color: var(--primary-color);
+    color: var(--card-background);
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    line-height: 1;
+    cursor: default; /* Tidak bisa diklik tanpa JS */
+    opacity: 0.7;
+}
+
+.price-summary {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-top: 20px;
+    padding-top: 10px;
+    border-top: 1px solid var(--border-color);
+}
+
+.price-summary .total-price {
+    color: var(--primary-color);
+}
+
+.continue-btn {
+    margin-top: 30px;
+}
+
+
+/*
+    -------------------------------------------
+    BOOKING CONFIRMATION SCREEN
+    -------------------------------------------
+*/
+.confirmation-card {
+    text-align: center;
+}
+
+.confirmation-card h2 {
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+.confirmation-card h3 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.confirmation-card p {
+    color: var(--text-muted);
+    margin-bottom: 20px;
+}
+
+.airplane-illustration {
+    font-size: 4rem;
+    color: var(--primary-color);
+    margin: 30px 0;
+    position: relative;
+}
+
+.airplane-illustration i {
+    color: #4f46e5;
+    transform: rotate(-25deg);
+    display: block;
+}
+
+.booking-details-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    text-align: left;
+    margin-bottom: 15px;
+    padding-top: 10px;
+    border-top: 1px dashed var(--border-color);
+}
+
+.details-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--background-light);
+    font-size: 1rem;
+}
+
+.details-row span {
+    text-align: left;
+    flex: 1;
+}
+
+.details-row .detail-value {
+    text-align: right;
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+.view-tickets-btn {
+    margin-top: 30px;
+}

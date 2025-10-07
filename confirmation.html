@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking Confirmation - Travel App</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+    <header class="app-header">
+        <h1 id="header-title">PROFILE</h1>
+    </header>
+
+    <main class="app-container">
+
+        <section id="confirmation-screen" class="screen-content">
+            <div class="card confirmation-card">
+                <h2>Booking History</h2>
+                <h3>Ticket Purchased!</h3>
+                <p>Thank you for booking with us. Your travel is confirmed.</p>
+                <div class="airplane-illustration">
+                    <i class="fa-solid fa-plane-up"></i>
+                </div>
+                
+                <h4 class="booking-details-title">Booking Details (Last Trip)</h4>
+                <div class="details-row">
+                    <span>Destination</span>
+                    <span class="detail-value">Bali</span>
+                </div>
+                <div class="details-row">
+                    <span>Date</span>
+                    <span class="detail-value">12 April 2024</span>
+                </div>
+                <div class="details-row">
+                    <span>Time</span>
+                    <span class="detail-value">10:00 AM</span>
+                </div>
+                <div class="details-row">
+                    <span>Seat</span>
+                    <span class="detail-value">12A</span>
+                </div>
+                
+                <button class="btn primary-btn view-tickets-btn" onclick="window.location.href='home.html'">Back to Home</button>
+            </div>
+        </section>
+
+    </main>
+
+    <nav class="bottom-nav">
+        <a href="home.html" class="nav-item">
+            <i class="fas fa-home"></i>
+            <span>Home</span>
+        </a>
+        <a href="booking.html" class="nav-item">
+            <i class="fas fa-ticket-alt"></i>
+            <span>Tickets</span>
+        </a>
+        <a href="confirmation.html" class="nav-item active">
+            <i class="fas fa-user"></i>
+            <span>Profile</span>
+        </a>
+    </nav>
+
+    <footer class="app-footer">
+        &copy; 2024 10 pplg 1 kelompok 3
+    </footer>
+</body>
+</html>
